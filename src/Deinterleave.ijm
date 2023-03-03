@@ -1,4 +1,7 @@
-//Take an image series and split it into two separate image sums
+//Take an image series and split it into 3 images:
+//1: sum of odd-numbered frames (pump)
+//2: sum of even-numbered frames (pumpProbe)
+//3: difference (1) - (2)
 //Designed for photothermal imaging, to toggle between a pump image and
 //a Pump&Probe image, then sum the two
 
@@ -13,15 +16,17 @@ Dialog.create("My inputs");
 Dialog.addMessage("Select Source File and Label:");
 Dialog.addChoice("Source File:", im_name_list);
 Dialog.addString("Image Label:", base_title);
+//get dialog options
 Dialog.show();
 t = Dialog.getChoice();
 label = Dialog.getString();
+//start sorting the frames
 selectWindow(t);
 run("Deinterleave", "how=2 keep"); 
 close(t + " #3"); //close any leftovers from odd-numbered stacks
 selectWindow(t + " #1"); //pump images (odd frames)
 run("Z Project...", "projection=[Sum Slices]");
-rename("Pump Sum (" + label + ")");
+rename("Probe Sum (" + label + ")");
 avg1 = getTitle;
 selectWindow(t + " #2"); //pumpProbe images (even frames)
 run("Z Project...", "projection=[Sum Slices]");
