@@ -25,7 +25,9 @@ makeRectangle(0, 0, 1224, 1024);
 run("Duplicate...", "title="+quad_rename+"_phase1");
 
 selectImage(quad_rename);
-makeRectangle(0, 1024, 1224, 1024);
+//choose the bottom right quadrant
+makeRectangle(1224, 1024, 1224, 1024);
+//makeRectangle(1024, 2048, 1224, 1024);
 run("Duplicate...", "title="+quad_rename+"_phase2");
 
 selectImage(quad_rename);
