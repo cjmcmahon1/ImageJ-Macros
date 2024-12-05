@@ -26,17 +26,30 @@ run("Set Scale...", quad_scale_params);
 quad_rename = substring(quad_str,0,lengthOf(quad_str)-4);
 run("Duplicate...", "title="+quad_rename);
 
+//top right then bottom left
 rename(quad_rename);
-makeRectangle(0, 0, 1224, 1024);
+makeRectangle(1224, 0, 1224, 1024);
 phase1_name = quad_rename+"_phase1";
 run("Duplicate...", "title="+phase1_name);
 
 selectImage(quad_rename);
-//choose the bottom right quadrant
-makeRectangle(1224, 1024, 1224, 1024);
-//makeRectangle(1024, 2048, 1224, 1024);
+//choose the bottom left quadrant
+makeRectangle(0, 1024, 1224, 1024);
 phase2_name = quad_rename+"_phase2"
 run("Duplicate...", "title="+phase2_name);
+
+//top left then bottom right
+//rename(quad_rename);
+//makeRectangle(0, 0, 1224, 1024);
+//phase1_name = quad_rename+"_phase1";
+//run("Duplicate...", "title="+phase1_name);
+//
+//selectImage(quad_rename);
+////choose the bottom right quadrant
+//makeRectangle(1224, 1024, 1224, 1024);
+////makeRectangle(1024, 2048, 1224, 1024);
+//phase2_name = quad_rename+"_phase2"
+//run("Duplicate...", "title="+phase2_name);
 
 //subtract_params = "expression=abs(A-B) a=5nm-530led-pol_2024-11-14T17-53-50.596_phase1 b=5nm-530led-pol_2024-11-14T17-53-50.596_phase2 c=None d=None e=None f=None"
 subtract_params = "expression=abs(A-B) a="+phase1_name+" b="+phase2_name+" c=None d=None e=None";

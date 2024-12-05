@@ -1,0 +1,5 @@
+//polarization camera 4-view plot
+
+base_title = getTitle;
+run("Plot Profile");
+getSelectionCoordinates(x, y);
